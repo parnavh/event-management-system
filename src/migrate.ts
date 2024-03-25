@@ -15,10 +15,22 @@ const result = await csv.parseString(file).toArray();
 result.shift();
 
 const data: Data[] = result.map((row) => {
+  const dateParts = row[2].split("-");
+  const timeParts = row[3].split(":");
+
+  const parsedDate = new Date(
+    dateParts[0],
+    dateParts[1] - 1,
+    dateParts[2],
+    timeParts[0],
+    timeParts[1],
+    timeParts[2],
+  );
+
   return {
     event_name: row[0],
     city_name: row[1],
-    date: new Date(`${row[2]}T${row[3]}`),
+    date: parsedDate,
     latitude: row[4],
     longitude: row[5],
   };
