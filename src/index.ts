@@ -32,7 +32,9 @@ app.post("/event", async (req, res) => {
     throw new Error("Event already exists");
   }
 
-  await db.event.create(data.data);
+  await db.event.create({
+    data: data.data,
+  });
 
   res.status(200).json({ message: "Event created successfully" });
 });
