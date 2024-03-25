@@ -1,6 +1,6 @@
 import express from "express";
 import cors from "cors";
-import { env } from "@/env";
+import "@/env";
 import eventsRouter from "@/routes/events";
 
 const app = express();
@@ -14,6 +14,8 @@ app.get("/", (_, res) => {
 
 app.use("/events", eventsRouter);
 
-app.listen(3000, () => {
+const PORT = process.env.PORT || 3000;
+
+app.listen(PORT, () => {
   console.log("Server is running on port 3000");
 });
