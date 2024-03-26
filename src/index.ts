@@ -3,6 +3,8 @@ import cors from "cors";
 import "@/env";
 import eventsRouter from "@/routes/events";
 import errorHandler from "@/middleware";
+import swaggerUI from "swagger-ui-express";
+import { specs } from "@/docs";
 
 const app = express();
 
@@ -10,8 +12,10 @@ app.use(express.json());
 app.use(cors());
 
 app.get("/", (_, res) => {
-  res.send("Hello World");
+  res.redirect("/docs");
 });
+
+app.use("/docs", swaggerUI.serve, swaggerUI.setup(specs));
 
 app.use("/events", eventsRouter);
 

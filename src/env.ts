@@ -6,6 +6,7 @@ export const env = createEnv({
     DATABASE_URL: z.string().url(),
     WEATHER_API_URL: z.string().url(),
     DISTANCE_API_URL: z.string().url(),
+    SERVER_URL: z.string().url(),
   },
   runtimeEnv: process.env,
   emptyStringAsUndefined: true,
