@@ -44,16 +44,14 @@ export async function findEvents(
     const page = data.page ?? 1;
     const pageSize = data.pageSize ?? 10;
 
-    const roundedLateDate = new Date(
-      data.date.getTime() + 15 * 24 * 60 * 60 * 1000,
-    );
+    const lateDate = new Date(data.date.getTime() + 15 * 24 * 60 * 60 * 1000);
 
     const [events, totalEvents] = await Promise.all([
       db.event.findMany({
         where: {
           date: {
             gte: data.date,
-            lte: roundedLateDate,
+            lte: lateDate,
           },
         },
         orderBy: {
@@ -66,7 +64,7 @@ export async function findEvents(
         where: {
           date: {
             gte: data.date,
-            lte: roundedLateDate,
+            lte: lateDate,
           },
         },
       }),
@@ -75,6 +73,10 @@ export async function findEvents(
     const promises = events.map((event) => fetchAdditionalData(data, event));
 
     const results = await Promise.all(promises);
+
+    if (results.length === 0) {
+      throw new CustomError("No events found", 404);
+    }
 
     res.status(200).json({
       events: results,
