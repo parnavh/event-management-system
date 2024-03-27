@@ -8,6 +8,55 @@ import { CustomError } from "@/error";
 
 type Query = z.infer<typeof querySchema>;
 
+/**
+ * @swagger
+ *
+ * components:
+ *   schemas:
+ *     Event:
+ *       type: object
+ *       description: Event returned when finding events
+ *       properties:
+ *         event_name:
+ *           type: string
+ *           description: The name of the event
+ *         city_name:
+ *           type: string
+ *           description: The name of the city
+ *         date:
+ *           type: string
+ *           format: date
+ *           description: The date of the event
+ *         weather:
+ *           type: string
+ *           description: Weather at the event (Using external API)
+ *         distance_km:
+ *           type: string
+ *           description: Distance between the user and the event in km
+ *
+ *
+ *     EventQueryResponse:
+ *       type: object
+ *       description: Response Recieved when querying for events
+ *       properties:
+ *         events:
+ *           type: array
+ *           items:
+ *             $ref: '#/components/schemas/Event'
+ *         page:
+ *           type: number
+ *           default: 1
+ *         pageSize:
+ *           type: number
+ *           default: 10
+ *         totalEvents:
+ *           type: number
+ *           default: 200
+ *         totalPages:
+ *           type: number
+ *           default: 20
+ */
+
 async function fetchAdditionalData(user: Query, event: Event) {
   const [weather, distance] = await Promise.all([
     fetchWeather(event.city_name, event.date),
@@ -15,7 +64,7 @@ async function fetchAdditionalData(user: Query, event: Event) {
       event.latitude,
       event.longitude,
       user.latitude,
-      user.longitude,
+      user.longitude
     ),
   ]);
   return {
@@ -30,7 +79,7 @@ async function fetchAdditionalData(user: Query, event: Event) {
 export async function findEvents(
   req: Request,
   res: Response,
-  next: NextFunction,
+  next: NextFunction
 ) {
   try {
     const query = querySchema.safeParse(req.query);
