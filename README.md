@@ -3,7 +3,8 @@
 A RESTful service that manages and queries event data based on a user's geographical location and a specified date.
 Built for GyanGrove
 
-### [Live demo on Azure](https://parnavh-gg.proudbush-52e2fb58.centralindia.azurecontainerapps.io/)
+### [Live demo on Azure](https://gg.parnavh.dev/)
+*cold start may take a minute*
 
 
 ## 🚀 Tech Stack
