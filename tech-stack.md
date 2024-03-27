@@ -2,7 +2,9 @@
 
 ## 🚀Programming Language
 
-- **Node.js**: Employed for backend development, providing a scalable and efficient runtime environment for JavaScript.
+- **JavaScript**: Utilized as the primary programming language
+- **Bun**: Utilized as the JavaScript runtime for backend development, providing enhanced performance compared to Node.js.
+
 
 ## 📦Frameworks and Libraries
 
@@ -13,7 +15,7 @@
 
 ## 🗄️Database
 
-- **PostgreSQL**: Chosen as the relational database management system for its reliability, performance, and advanced features. Although not directly using latitude and longitude data currently, PostgreSQL with PostGIS enables seamless handling of geographic data, facilitating future expansion.
+- **PostgreSQL**: Chosen as the relational database management system for its reliability, performance, and advanced features. Although not directly using latitude and longitude data currently, PostgreSQL with PostGIS enables seamless handling of geographic data, facilitating future expansion. Additionally, a `BTree` index has been created on the `date` column to optimize query performance.
 
 ## ☁️Hosting Platform
 

@@ -15,5 +15,5 @@ model Event {
   latitude   Float
   longitude  Float
 
-  @@index([date], name: "idx_event_name")
+  @@index([date], name: "idx_event_name") // BTree index
 }

@@ -8,7 +8,7 @@ Built for GyanGrove
 
 
 ## 🚀 Tech Stack
-**Node.js**, **Express.js**, **PostgreSQL**, **Docker**, **Azure**, **Swagger**
+**Javascript**, **Bun**, **Express.js**, **PostgreSQL**, **Docker**, **Azure**, **Swagger**
 
 For more details, see [tech-stack](tech-stack.md).
 

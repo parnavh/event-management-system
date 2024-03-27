@@ -29,6 +29,8 @@ const router = express.Router();
  *         description: Event was created.
  *       400:
  *         description: Invalid Request Parameters
+ *       409:
+ *         description: Event already exists
  *       500:
  *         description: Internal server error
  *
@@ -78,6 +80,8 @@ const router = express.Router();
  *           application/json:
  *             schema:
  *               $ref: '#/components/schemas/EventQueryResponse'
+ *       400:
+ *         description: Invalid Request Parameters
  *       404:
  *         description: No Events found
  *       500:
@@ -102,7 +106,7 @@ router.put("/", async (req, res, next) => {
     });
 
     if (event) {
-      throw new CustomError("Event already exists", 400);
+      throw new CustomError("Event already exists", 409);
     }
 
     await db.event.create({
