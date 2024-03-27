@@ -14,4 +14,6 @@ model Event {
   date       DateTime
   latitude   Float
   longitude  Float
+
+  @@index([date], name: "idx_event_name")
 }
