@@ -11,13 +11,13 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
-app.get("/", (_, res) => {
-  res.redirect("/docs");
-});
-
 app.use("/docs", swaggerUI.serve, swaggerUI.setup(specs));
 
 app.use("/events", eventsRouter);
+
+app.use((_, res, __) => {
+  res.redirect("/docs");
+})
 
 app.use(errorHandler);
 
