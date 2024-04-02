@@ -15,7 +15,9 @@ For more details, see [tech-stack](tech-stack.md).
 ## ⚒️ Setup
 Install bun if not installed: 
 ```bash
-curl -fsSL https://bun.sh/install | bash
+curl -fsSL https://bun.sh/install | bash        # MacOS/Linux
+
+powershell -c "irm bun.sh/install.ps1 | iex"    # Windows
 ```
 
 Create a `.env` file: 
